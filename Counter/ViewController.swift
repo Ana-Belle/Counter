@@ -9,19 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var counterValueLabel: UILabel!
-    @IBOutlet weak var decrementButton: UIButton!
-    @IBOutlet weak var incrementButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var historyOfChangesTextView: UITextView!
+    @IBOutlet private weak var counterValueLabel: UILabel!
+    @IBOutlet private weak var decrementButton: UIButton!
+    @IBOutlet private weak var incrementButton: UIButton!
+    @IBOutlet private weak var resetButton: UIButton!
+    @IBOutlet private weak var historyOfChangesTextView: UITextView!
     private var counterValue: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-    @IBAction func incrementButtonDidTap(_ sender: Any) {
+    @IBAction private func incrementButtonDidTap(_ sender: Any) {
         counterValue += 1
         counterValueLabel.text = "Значение счётчика: \(counterValue)"
         if let historyOfChanges = historyOfChangesTextView.text {
@@ -29,7 +28,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func decrementButtonDidTap(_ sender: Any) {
+    @IBAction private func decrementButtonDidTap(_ sender: Any) {
         if let historyOfChanges = historyOfChangesTextView.text {
             counterValue -= 1
             if counterValue < 0 {
@@ -41,14 +40,14 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func resetButtonDidTap(_ sender: Any) {
+
+    @IBAction private func resetButtonDidTap(_ sender: Any) {
         counterValue = 0
         counterValueLabel.text = "Значение счётчика: \(counterValue)"
         if let historyOfChanges = historyOfChangesTextView.text {
             historyOfChangesTextView.text = "\(historyOfChanges)\n [\(Date().formatDate())]: значение сброшено"
         }
     }
-    
+
 }
 
